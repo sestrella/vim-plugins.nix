@@ -1,0 +1,21 @@
+name: update
+
+on: push
+  # schedule:
+  #   - cron: 0 0 * * 0
+
+concurrency:
+  group: update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v24
+      - run: nix flake update
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: Update `flake.lock`"
+          add-paths: flake.lock
