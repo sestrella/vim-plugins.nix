@@ -12,13 +12,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
       contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v24
       - run: nix flake update
       - uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: "chore: Update `flake.lock`"
           add-paths: flake.lock
+          commit-message: "chore: Update `flake.lock`"
+          token: ${{ secrets.GITHUB_TOKEN }}
