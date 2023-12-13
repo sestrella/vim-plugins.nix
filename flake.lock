@@ -139,7 +139,8 @@
         "cmp-vsnip": "cmp-vsnip",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "nvim-cmp": "nvim-cmp"
+        "nvim-cmp": "nvim-cmp",
+        "vim-vsnip": "vim-vsnip"
       }
     },
     "systems": {
@@ -154,6 +155,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vim-vsnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699776303,
+        "narHash": "sha256-r5XxpKJ2vj6IG/y7RIRXasaT1j+XLuq3Il07HadsSoE=",
+        "owner": "hrsh7th",
+        "repo": "vim-vsnip",
+        "rev": "8eebdf6ab4a880d845893f210fd20516d2e2384f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "vim-vsnip",
         "type": "github"
       }
     }

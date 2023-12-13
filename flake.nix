@@ -16,6 +16,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nvim-cmp.flake = false;
     nvim-cmp.url = "github:hrsh7th/nvim-cmp";
+    vim-vsnip.flake = false;
+    vim-vsnip.url = "github:hrsh7th/vim-vsnip";
   };
 
   outputs = inputs@{ self, flake-utils, nixpkgs, ... }:
@@ -51,6 +53,10 @@
             nvim-cmp = pkgs.vimUtils.buildVimPlugin {
               name = "nvim-cmp";
               src = inputs.nvim-cmp;
+            };
+            vim-vsnip = pkgs.vimUtils.buildVimPlugin {
+              name = "vim-vsnip";
+              src = inputs.vim-vsnip;
             };
           };
         })
