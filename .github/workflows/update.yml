@@ -22,4 +22,5 @@ jobs:
         with:
           add-paths: flake.lock
           commit-message: "chore: Update `flake.lock`"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          delete-branch: true
+          title: "chore: Update `flake.lock`"

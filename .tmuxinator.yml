@@ -1,0 +1,4 @@
+name: sestrella/vim-plugins
+windows:
+  - editor: nvim
+  - shell:
