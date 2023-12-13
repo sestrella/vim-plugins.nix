@@ -23,4 +23,5 @@ jobs:
           add-paths: flake.lock
           commit-message: "chore: Update `flake.lock`"
           delete-branch: true
+          reviewers: sestrella
           title: "chore: Update `flake.lock`"
