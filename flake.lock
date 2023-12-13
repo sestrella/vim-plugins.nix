@@ -3,17 +3,16 @@
     "auto-dark-mode-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1695457726,
-        "narHash": "sha256-e7AUIPPfFfuLpR/0kgpU4kYO/78Bfq29BhyecZSyDVE=",
+        "lastModified": 1695457749,
+        "narHash": "sha256-uJ4LxczgWl4aQCFuG4cR+2zwhNo7HB6R7ZPTdgjvyfY=",
         "owner": "f-person",
         "repo": "auto-dark-mode.nvim",
-        "rev": "8cf00134c61e75cb44be7bd64133a1e8d6e923b5",
+        "rev": "76e8d40d1e1544bae430f739d827391cbcb42fcc",
         "type": "github"
       },
       "original": {
         "owner": "f-person",
         "repo": "auto-dark-mode.nvim",
-        "rev": "8cf00134c61e75cb44be7bd64133a1e8d6e923b5",
         "type": "github"
       }
     },
