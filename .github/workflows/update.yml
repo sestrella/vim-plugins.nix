@@ -1,8 +1,9 @@
 name: update
 
-on: push
-  # schedule:
-  #   - cron: 0 0 * * 0
+on:
+  schedule:
+    # Every Monday at 9:00 AM ECT
+    - cron: 0 14 * * 1
 
 concurrency:
   group: update
