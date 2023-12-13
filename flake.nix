@@ -19,41 +19,49 @@
   };
 
   outputs = inputs@{ self, flake-utils, nixpkgs, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      rec {
-        # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
-        packages = {
-          auto-dark-mode-nvim = pkgs.vimUtils.buildVimPlugin {
-            name = "auto-dark-mode.nvim";
-            src = inputs.auto-dark-mode-nvim;
+    flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        rec {
+          checks = packages;
+          # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
+          packages = {
+            auto-dark-mode-nvim = pkgs.vimUtils.buildVimPlugin {
+              name = "auto-dark-mode.nvim";
+              src = inputs.auto-dark-mode-nvim;
+            };
+            cmp-buffer = pkgs.vimUtils.buildVimPlugin {
+              name = "cmp-buffer";
+              src = inputs.cmp-buffer;
+            };
+            cmp-nvim-lsp = pkgs.vimUtils.buildVimPlugin {
+              name = "cmp-nvim-lsp";
+              src = inputs.cmp-nvim-lsp;
+            };
+            cmp-path = pkgs.vimUtils.buildVimPlugin {
+              name = "cmp-path";
+              src = inputs.cmp-path;
+            };
+            cmp-vsnip = pkgs.vimUtils.buildVimPlugin {
+              name = "cmp-vsnip";
+              src = inputs.cmp-vsnip;
+            };
+            nvim-cmp = pkgs.vimUtils.buildVimPlugin {
+              name = "nvim-cmp";
+              src = inputs.nvim-cmp;
+            };
           };
-          cmp-buffer = pkgs.vimUtils.buildVimPlugin {
-            name = "cmp-buffer";
-            src = inputs.cmp-buffer;
-          };
-          cmp-nvim-lsp = pkgs.vimUtils.buildVimPlugin {
-            name = "cmp-nvim-lsp";
-            src = inputs.cmp-nvim-lsp;
-          };
-          cmp-path = pkgs.vimUtils.buildVimPlugin {
-            name = "cmp-path";
-            src = inputs.cmp-path;
-          };
-          cmp-vsnip = pkgs.vimUtils.buildVimPlugin {
-            name = "cmp-vsnip";
-            src = inputs.cmp-vsnip;
-          };
-          nvim-cmp = pkgs.vimUtils.buildVimPlugin {
-            name = "nvim-cmp";
-            src = inputs.nvim-cmp;
-          };
-        };
 
-        # https://nixos.wiki/wiki/Overlays
-        overlays.default = final: prev: {
+        }
+      ) // {
+      # https://nixos.wiki/wiki/Overlays
+      overlays.default = final: prev:
+        let
+          packages = self.packages.${prev.system};
+        in
+        {
           vimPlugins = prev.vimPlugins.extend (final': prev': {
             auto-dark-mode-nvim = packages.auto-dark-mode-nvim;
             cmp-buffer = packages.cmp-buffer;
@@ -63,5 +71,5 @@
             nvim-cmp = packages.nvim-cmp;
           });
         };
-      });
+    };
 }
