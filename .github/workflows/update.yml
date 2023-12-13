@@ -4,6 +4,7 @@ on:
   schedule:
     # Every Monday at 9:00 AM ECT
     - cron: 0 14 * * 1
+  workflow_dispatch:
 
 concurrency:
   group: update
