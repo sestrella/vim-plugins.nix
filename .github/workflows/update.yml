@@ -21,6 +21,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v5
         with:
           add-paths: flake.lock
+          base: main
           commit-message: "chore: Update `flake.lock`"
           delete-branch: true
           title: "chore: Update `flake.lock`"
