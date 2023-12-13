@@ -53,23 +53,12 @@
               src = inputs.nvim-cmp;
             };
           };
-
-        }
-      ) // {
+        })
+    //
+    {
       # https://nixos.wiki/wiki/Overlays
-      overlays.default = final: prev:
-        let
-          packages = self.packages.${prev.system};
-        in
-        {
-          vimPlugins = prev.vimPlugins.extend (final': prev': {
-            auto-dark-mode-nvim = packages.auto-dark-mode-nvim;
-            cmp-buffer = packages.cmp-buffer;
-            cmp-nvim-lsp = packages.cmp-nvim-lsp;
-            cmp-path = packages.cmp-path;
-            cmp-vsnip = packages.cmp-vsnip;
-            nvim-cmp = packages.nvim-cmp;
-          });
-        };
+      overlays.default = final: prev: {
+        vimPlugins = prev.vimPlugins.extend (final': prev': self.packages.${prev.system});
+      };
     };
 }
