@@ -13,7 +13,7 @@
     cmp-vsnip.flake = false;
     cmp-vsnip.url = "github:hrsh7th/cmp-vsnip";
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11-small";
     nvim-cmp.flake = false;
     nvim-cmp.url = "github:hrsh7th/nvim-cmp";
     vim-vsnip.flake = false;
